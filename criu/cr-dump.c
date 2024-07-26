@@ -197,19 +197,19 @@ static int dump_sched_info(int pid, ThreadCoreEntry *tc)
 
 static int check_thread_rseq(pid_t tid, const struct parasite_check_rseq *ti_rseq)
 {
-	if (!kdat.has_rseq || kdat.has_ptrace_get_rseq_conf)
-		return 0;
+	// if (!kdat.has_rseq || kdat.has_ptrace_get_rseq_conf)
+	// 	return 0;
 
-	pr_debug("%d has rseq_inited = %d\n", tid, ti_rseq->rseq_inited);
+	// pr_debug("%d has rseq_inited = %d\n", tid, ti_rseq->rseq_inited);
 
-	/*
-	 * We have no kdat.has_ptrace_get_rseq_conf and user
-	 * process has rseq() used, let's fail dump.
-	 */
-	if (ti_rseq->rseq_inited) {
-		pr_err("%d has rseq but kernel lacks get_rseq_conf feature\n", tid);
-		return -1;
-	}
+	// /*
+	//  * We have no kdat.has_ptrace_get_rseq_conf and user
+	//  * process has rseq() used, let's fail dump.
+	//  */
+	// if (ti_rseq->rseq_inited) {
+	// 	pr_err("%d has rseq but kernel lacks get_rseq_conf feature\n", tid);
+	// 	return -1;
+	// }
 
 	return 0;
 }
